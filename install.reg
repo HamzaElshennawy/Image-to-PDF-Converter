@@ -3,8 +3,8 @@ Windows Registry Editor Version 5.00
 ; Context menu for multiple image files
 [HKEY_CLASSES_ROOT\SystemFileAssociations\image\shell\ConvertToPDF]
 @="Convert to PDF"
-"Icon"="imageres.dll,-102"
+"Icon"="imageres.dll,102"
 "MultiSelectModel"="Player"
 
 [HKEY_CLASSES_ROOT\SystemFileAssociations\image\shell\ConvertToPDF\command]
-@="\"D:\\Work\\PDF Converter\\convert_to_pdf.bat\" %*"
+@="\"D:\\Work\\PDF Converter\\singleinstance.exe\" \"%1\" \"D:\\Work\\PDF Converter\\convert_to_pdf.bat\" $files --si-timeout 400"
