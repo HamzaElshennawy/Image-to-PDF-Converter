@@ -11,7 +11,7 @@ import traceback
 from datetime import datetime
 
 
-def convert_images_to_pdf(image_paths, output_path=None):
+def convert_images_to_pdf(image_paths, output_path=None, sort=True):
     """Convert multiple images to a single PDF file."""
 
     # Expand directories and filter valid image files
@@ -33,8 +33,9 @@ def convert_images_to_pdf(image_paths, output_path=None):
         print("No valid image files found.")
         return False
 
-    # Sort images by name
-    valid_images.sort()
+    # Sort images by name if requested
+    if sort:
+        valid_images.sort()
 
     # Generate output filename if not provided
     if output_path is None:
@@ -115,16 +116,19 @@ def convert_images_to_pdf(image_paths, output_path=None):
         return False
 
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python script.py <image1|dir1> [image2|dir2] ...")
-        sys.exit(1)
+import argparse
 
-    # Get all image paths or directories from command line arguments
-    image_paths = sys.argv[1:]
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Convert images to a single PDF file.")
+    parser.add_argument(
+        "images", nargs="+", help="Image files or directories to convert"
+    )
+    parser.add_argument("-o", "--output", help="Output PDF file path")
+
+    args = parser.parse_args()
 
     # Convert to PDF
-    success = convert_images_to_pdf(image_paths)
+    success = convert_images_to_pdf(args.images, output_path=args.output)
 
     # If running interactively, keep console open to show result
     try:

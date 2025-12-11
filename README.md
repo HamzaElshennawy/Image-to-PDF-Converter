@@ -50,6 +50,26 @@ You can mix individual files and directories:
 python script.py path/to/image1.jpg path/to/folder_of_images
 ```
 
+### Specify Output File
+
+You can specify the name and location of the output PDF using the `-o` or `--output` flag:
+
+```bash
+python script.py -o my_document.pdf image1.jpg image2.png
+```
+
+### Using the GUI
+
+A graphical interface is available for easier use.
+
+1.  Run the GUI script:
+    ```bash
+    python gui.py
+    ```
+2.  **Add Images**: Click "Add Images..." to select files.
+3.  **Reorder**: Use "Move Up" and "Move Down" buttons to arrange the page order.
+4.  **Convert**: Click "Convert to PDF" and choose where to save the file.
+
 ## How it Works
 
 1.  The script accepts a list of file or folder paths.
