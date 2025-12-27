@@ -130,11 +130,4 @@ if __name__ == "__main__":
     # Convert to PDF
     success = convert_images_to_pdf(args.images, output_path=args.output)
 
-    # If running interactively, keep console open to show result
-    try:
-        if sys.stdin and sys.stdin.isatty():
-            input("\nPress Enter to close...")
-    except Exception:
-        pass
-
     sys.exit(0 if success else 1)
